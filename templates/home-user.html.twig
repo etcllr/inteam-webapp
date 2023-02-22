@@ -2,4 +2,13 @@
 
 {% block body %}
     <h1>Hello user!</h1>
+
+    {% for machine in machines %}
+        {{ component('card-machine', {
+            code: machine.code,
+            name: machine.name,
+            brand: machine.brand,
+            category: machine.category
+        }) }}
+    {% endfor %}
 {% endblock %}

@@ -22,6 +22,13 @@ class Machine
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
+
+    #[ORM\ManyToOne(inversedBy: 'machines')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $customer = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +66,30 @@ class Machine
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getCustomer(): ?User
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(?User $customer): self
+    {
+        $this->customer = $customer;
 
         return $this;
     }
