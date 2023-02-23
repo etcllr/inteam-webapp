@@ -2,14 +2,14 @@
 
 {% block body %}
     {{ component('navbar') }}
+
     <br>
-    {{ form_start(form) }}
-    <div>
+    <div class="ticket-form">
+        {{ form_start(form) }}
+        <h1>Demande d'intervention sur {{ machine }}</h1>
         {{ form_row(form.title) }}
-    </div>
-    <div>
         {{ form_row(form.description) }}
+    <button type="submit">Envoyer</button>
+        {{ form_end(form) }}
     </div>
-    <button type="submit">Valider</button>
-    {{ form_end(form) }}
 {% endblock %}
