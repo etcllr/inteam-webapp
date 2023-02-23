@@ -50,6 +50,24 @@ class HomeController extends AbstractController
     /**
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
      */
+    #[Route('/category/{category}', name: 'home-category')]
+    public function selectCategory(string $category, MachineRepository $machineRepository)
+    {
+        $machines = $machineRepository->findAll();
+        $customerMachines = [];
+        foreach ($machines as $machine) {
+            if ($machine->getCustomer()->getId() === $this->getUser()->getId() && $machine->getCategory() === $category) {
+                $customerMachines[] = $machine;
+            }
+        }
+        return $this->render('home-user.html.twig', [
+            'machines' => $customerMachines,
+        ]);
+    }
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
+     */
     #[Route('/machine-detail/{id}', name: 'machine-detail')]
     public function viewMachineDetail(Machine $machine, TicketRepository $ticketRepository)
     {
