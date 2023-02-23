@@ -12,7 +12,10 @@
 
 {% block body %}
     <nav>
-        <img class="header-logo" src="{{ asset('build/img/logo.png') }}" alt="logo">
+        <a href="{{ path('home') }}" title="Image logo">
+        <img class="header-logo" src="{{ asset('build/img/logo.png') }}"/>
+        </a>
+
         <div class="header-actions">
             <a style="text-decoration: none" href="{{ path('app_logout') }}">
                 <h4 class="header-subtitle">
