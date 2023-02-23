@@ -2,14 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Machine;
 use App\Entity\User;
 use App\Repository\MachineRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\CurrentUser;
-
 
 class HomeController extends AbstractController
 {
@@ -35,5 +33,16 @@ class HomeController extends AbstractController
                 'machines' => $customerMachines,
             ]);
         }
+    }
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
+     */
+    #[Route('/machine-detail/{id}', name: 'machine-detail')]
+    public function viewMachineDetail(Machine $machine)
+    {
+        return $this->render('machine-detail.html.twig', [
+            'machine' => $machine,
+        ]);
     }
 }

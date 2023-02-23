@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <button>Demander une intervention</button>
+    <div>
+        {#
+            Prévoir la div de l'image
+            <div></div
+        #}
+        <div>
+            <ul>
+                <li>Code : {{ machine.code }}</li>
+                <li>Marque : {{ machine.brand }}</li>
+                <li>Modèle : {{ machine.name }}</li>
+                <li>Catégorie : {{ machine.category }}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

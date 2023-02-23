@@ -1,5 +1,9 @@
-<div>
-    <h1>{{ code }} ({{ name }})</h1>
-    <h3>{{ brand }}</h3>
-    <span>{{ category }}</span>
-</div>
+<a
+        class="btn btn-outline-success"
+        href="{{ path('machine-detail', {'id': id}) }}">
+    <div>
+        <h1>{{ code }} ({{ name }})</h1>
+        <h3>{{ brand }}</h3>
+        <span>{{ category }}</span>
+    </div>
+</a>

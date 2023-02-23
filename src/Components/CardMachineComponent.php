@@ -7,6 +7,7 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('card-machine')]
 class CardMachineComponent
 {
+    public int $id;
     public string $name;
     public string $brand;
     public string $category;
