@@ -19,7 +19,7 @@ Encore
             to: 'img/[path][name].[ext]'
         },
         {
-            from: './assets/fonts',
+            from: './assets/styles/fonts',
             to: 'fonts/[path][name].[ext]'
         })
 
@@ -30,6 +30,7 @@ Encore
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('navbar', './assets/navbar/navbar.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

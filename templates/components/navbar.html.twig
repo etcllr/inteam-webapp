@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('navbar') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('navbar') }}
+{% endblock %}
+
+{% block body %}
+    <nav>
+        <img class="header-logo" src="{{ asset('build/img/logo.png') }}" alt="logo">
+        <div class="header-actions">
+            <a style="text-decoration: none" href="{{ path('app_logout') }}">
+                <h4 class="header-subtitle">
+                    Se déconnecter
+                </h4>
+            </a>
+        </div>
+    </nav>
+{% endblock %}
