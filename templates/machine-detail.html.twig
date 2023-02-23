@@ -3,10 +3,11 @@
 {% block body %}
     {{ component('navbar') }}
     <br>
-    <a href="{{ path('create-ticket', {'idMachine': machine.id}) }}">
-        <button>Demander une intervention</button>
-    </a>
-    <div>
+    <div class="container">
+        <a class="intervention-button" href="{{ path('create-ticket', {'idMachine': machine.id}) }}">
+            <button type="button" class="btn btn-danger">Demander une intervention</button>
+        </a>
+        <br>
         {#
             Prévoir la div de l'image
             <div></div
@@ -19,16 +20,16 @@
                 <li>Catégorie : {{ machine.category }}</li>
             </ul>
         </div>
-    </div>
-    <div>
-        <h3>Historique des interventions</h3>
-        {% for ticket in tickets %}
-            {{ component('intervention-row', {
-                id: ticket.id,
-                date: ticket.date,
-                title: ticket.title,
-                description: ticket.description
-            }) }}
-        {% endfor %}
+        <div>
+            <h3>Historique des interventions</h3>
+            {% for ticket in tickets %}
+                {{ component('intervention-row', {
+                    id: ticket.id,
+                    date: ticket.date,
+                    title: ticket.title,
+                    description: ticket.description
+                }) }}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
