@@ -94,6 +94,7 @@ class HomeController extends AbstractController
         $ticket = new Ticket();
         $ticket->setCustomer($this->getUser());
         $ticket->setMachine($this->em->getRepository(Machine::class)->find($idMachine));
+        $machineCode = $this->em->getRepository(Machine::class)->find($idMachine)->getCode();
         $ticket->setDate(new \DateTime());
         $ticket->setState('À faire');
         $form = $this->createForm(TicketType::class, $ticket);
@@ -108,7 +109,8 @@ class HomeController extends AbstractController
         }
 
         return $this->render('create-ticket.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'machine' => $machineCode
         ]);
     }
 }
