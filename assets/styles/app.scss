@@ -1,7 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Raleway';
 }
 
+//Login page
+div.login-page{
+    background-color: #ABCEDF;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10vh 0;
 
+    .panel{
+        border-radius: 10px;
+    }
+    .right-panel{
+        background-color: white;
+        height: calc(80vh - 32px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 32px;
+        width: 30vw;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+        img.logo{
+            width: 80px;
+            align-self: center;
+            padding-bottom: 12px;
+        }
+        h1{
+            font-weight: 900;
+            text-align: center;
+            font-size: 32px;
+        }
+        div.social-credentials{
+            display: flex;
+            flex-direction: row;
+            padding: 64px 0 32px;
+            img{
+                width: 40px !important;
+                padding: 0px 16px;
+            }
+        }
+        form{
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            label{
+                font-weight: 800;
+            }
+            input{
+                background: rgba(211, 211, 211, 0.62);
+                opacity: 0.2;
+                border: 2px solid rgba(0, 0, 0, 0.27);
+                border-radius: 10px;
+                height: 32px;
+                margin-bottom: 24px;
+                width: 400px;
+            }
+            button{
+                width: 400px;
+                background: #003E5C;
+                color: white;
+                border-radius: 10px;
+                height: 38px;
+                border: 0;
+                margin-top: 16px;
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+    }
+    .left-panel{
+        width: 30vw;
+        height: 80vh;
+        overflow: clip;
+        img{
+            height: 100%;
+            border-radius: 10px;
+        }
+    }
+}
