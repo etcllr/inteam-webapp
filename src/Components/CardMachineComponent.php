@@ -12,6 +12,7 @@ class CardMachineComponent
     public string $brand;
     public string $category;
     public string $code;
+    public string $image;
 }
 
 ?>

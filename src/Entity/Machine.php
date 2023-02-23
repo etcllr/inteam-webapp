@@ -34,6 +34,9 @@ class Machine
     #[ORM\OneToMany(mappedBy: 'machine', targetEntity: Ticket::class)]
     private Collection $tickets;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
@@ -130,6 +133,18 @@ class Machine
                 $ticket->setMachine(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
