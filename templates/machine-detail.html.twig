@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <button>Demander une intervention</button>
+    <a href="{{ path('create-ticket', {'idMachine': machine.id}) }}">
+        <button>Demander une intervention</button>
+    </a>
     <div>
         {#
             Prévoir la div de l'image
@@ -15,5 +17,16 @@
                 <li>Catégorie : {{ machine.category }}</li>
             </ul>
         </div>
+    </div>
+    <div>
+        <h3>Historique des interventions</h3>
+        {% for ticket in tickets %}
+            {{ component('intervention-row', {
+                id: ticket.id,
+                date: ticket.date,
+                title: ticket.title,
+                description: ticket.description
+            }) }}
+        {% endfor %}
     </div>
 {% endblock %}
