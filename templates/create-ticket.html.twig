@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ component('navbar') }}
+    <br>
     {{ form_start(form) }}
     <div>
         {{ form_row(form.title) }}
