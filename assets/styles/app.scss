@@ -285,3 +285,17 @@ h3.history{
 .detailsmachine{
     margin-bottom: 64px;
 }
+
+.admin-container {
+    display: flex;
+}
+
+.admin-container-right {
+    height: 100%;
+    flex: 70%;
+}
+
+.admin-container-left {
+    height: 100%;
+    flex: 30%;
+}

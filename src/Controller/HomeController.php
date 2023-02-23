@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\TicketType;
 use App\Repository\MachineRepository;
 use App\Repository\TicketRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -27,10 +28,26 @@ class HomeController extends AbstractController
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_MAINTAINER')")
      */
     #[Route('/', name: 'home')]
-    public function index(MachineRepository $machineRepository)
+    public function index(MachineRepository $machineRepository, UserRepository $userRepository)
     {
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            return $this->render('home-admin.html.twig');
+            $users = $userRepository->findAll();
+            $customers = [];
+            $maintainers = [];
+
+            foreach ($users as $user) {
+                if ($user->getRoles()[0] === 'ROLE_USER') {
+                    $customers[] = $user;
+                }
+                if ($user->getRoles()[0] === 'ROLE_MAINTAINER') {
+                    $maintainers[] = $user;
+                }
+            }
+
+            return $this->render('home-admin.html.twig', [
+                'maintainers' => $maintainers,
+                'customers' => $customers
+            ]);
         } else if ($this->container->get('security.authorization_checker')->isGranted('ROLE_MAINTAINER')) {
             return $this->render('home-maintainer.html.twig');
         } else {

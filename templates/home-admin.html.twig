@@ -3,5 +3,22 @@
 {% block body %}
     {{ component('navbar') }}
     <br>
-    <h1>Hello admin!</h1>
+    <div class="admin-container">
+        <div class="container admin-container-left">
+            <span>
+             <a href="{{ path('home') }}">
+                <button type="button" class="btn btn-primary">Clients</button>
+            </a>
+                <a href="{{ path('home') }}">
+                <button type="button" class="btn btn-primary">Techniciens</button>
+            </a>
+            </span>
+            {% for user in users %}
+                <h6>{{ user.username }}</h6>
+            {% endfor %}
+        </div>
+        <div class="container admin-container-right">
+            <h1>Hello admin!</h1>
+        </div>
+    </div>
 {% endblock %}
