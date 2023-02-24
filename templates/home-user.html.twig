@@ -4,6 +4,35 @@
     {{ component('navbar') }}
     <br>
 
+    <h3> Mon parc d'équipements </h2>
+
+    <br> </br>  
+ 
+    
+    <h6> Recherchez une machine </h1>
+    
+
+    
+
+
+    <div class="row height d-flex justify-content-center align-items-center">
+
+              <div class="col-md-6">
+
+                <div class="form">
+                  <i class="fa fa-search"></i>
+                  <input type="text" class="form-control form-input" placeholder="Search anything...">
+                  <span class="left-pan"><i class="fa fa-microphone"></i></span>
+                </div>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+
+    
+
     {% for machine in machines %}
         {{ component('card-machine', {
             id: machine.id,
