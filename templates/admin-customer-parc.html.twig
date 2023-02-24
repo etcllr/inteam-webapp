@@ -20,7 +20,16 @@
             {% endfor %}
         </div>
         <div class="container admin-container-right">
-            <h1>Veuillez sélectionner un utilisateur</h1>
+            {% for machine in machines %}
+                {{ component('card-machine', {
+                    id: machine.id,
+                    code: machine.code,
+                    name: machine.name,
+                    brand: machine.brand,
+                    category: machine.category,
+                    image: machine.image
+                }) }}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

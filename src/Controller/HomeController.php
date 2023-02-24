@@ -33,20 +33,15 @@ class HomeController extends AbstractController
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             $users = $userRepository->findAll();
             $customers = [];
-            $maintainers = [];
 
             foreach ($users as $user) {
                 if ($user->getRoles()[0] === 'ROLE_USER') {
                     $customers[] = $user;
                 }
-                if ($user->getRoles()[0] === 'ROLE_MAINTAINER') {
-                    $maintainers[] = $user;
-                }
             }
 
             return $this->render('home-admin.html.twig', [
-                'maintainers' => $maintainers,
-                'customers' => $customers
+                'users' => $customers
             ]);
         } else if ($this->container->get('security.authorization_checker')->isGranted('ROLE_MAINTAINER')) {
             return $this->render('home-maintainer.html.twig');
@@ -65,9 +60,88 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    #[Route('/selection/{type}', name: 'select-users')]
+    public function selectUsers(string $type, UserRepository $userRepository)
+    {
+        $users = $userRepository->findAll();
+        $specifics = [];
+
+        foreach ($users as $user) {
+            if ($user->getRoles()[0] === 'ROLE_USER' && $type === 'customer') {
+                $specifics[] = $user;
+            }
+            if ($user->getRoles()[0] === 'ROLE_MAINTAINER' && $type === 'maintainer') {
+                $specifics[] = $user;
+            }
+        }
+
+        return $this->render('home-admin.html.twig', [
+            'users' => $specifics
+        ]);
+    }
+
+    /**
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    #[Route('/selection/{type}/{idCustomer}', name: 'customer-view')]
+    public function getUserParc(string $type, UserRepository $userRepository, MachineRepository $machineRepository, TicketRepository $ticketRepository, int $idCustomer)
+    {
+        if ($type === 'ROLE_USER') {
+            $users = $userRepository->findAll();
+            $specifics = [];
+
+            foreach ($users as $user) {
+                if ($user->getRoles()[0] === 'ROLE_USER') {
+                    $specifics[] = $user;
+                }
+            }
+
+            $machines = $machineRepository->findAll();
+            $machinesUser = [];
+
+            foreach ($machines as $machine) {
+                if ($machine->getCustomer()->getId() === $idCustomer) {
+                    $machinesUser[] = $machine;
+                }
+            }
+
+            return $this->render('admin-customer-parc.html.twig', [
+                'users' => $specifics,
+                'machines' => $machinesUser
+            ]);
+        } else {
+            $users = $userRepository->findAll();
+            $specifics = [];
+
+            foreach ($users as $user) {
+                if ($user->getRoles()[0] === 'ROLE_MAINTAINER') {
+                    $specifics[] = $user;
+                }
+            }
+
+            $tickets = $ticketRepository->findAll();
+            $toDo = [];
+
+            foreach ($tickets as $ticket) {
+                if ($ticket->getState() === 'À faire') {
+                    $toDo[] = $ticket;
+                }
+            }
+
+            return $this->render('admin-ticket-maintainer.html.twig', [
+                'users' => $specifics,
+                'tickets' => $toDo
+            ]);
+        }
+    }
+
+    /**
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
      */
-    #[Route('/category/{category}', name: 'home-category')]
+    #[
+        Route('/category/{category}', name: 'home-category')]
     public function selectCategory(string $category, MachineRepository $machineRepository)
     {
         $machines = $machineRepository->findAll();
