@@ -22,7 +22,7 @@
 
                 <div class="form">
                   <i class="fa fa-search"></i>
-                  <input type="text" class="form-control form-input" placeholder="Search anything...">
+                  <input type="text" class="form-control form-input" placeholder="Rechercher...">
                   <span class="left-pan"><i class="fa fa-microphone"></i></span>
                 </div>
                 
@@ -36,9 +36,20 @@
         Choisir une catégorie
     </p>
     <div class="cat-grid">
-        <div class="cat-card">
-            <img src="/build/img/vélo.jpg">
+        {% if cat == 'velo' %}
+        <div class="cat-card active">
+            {% else %}
+            <div class="cat-card">
+        {% endif %}
+            <a href="/category/velo">
+            <img src="/build/img/Vélo.jpg">
             <p>Vélo (3)</p>
+            </a>
+        </div>
+        <div class="cat-card">
+            <a href="/category/tapis">
+            <img src="/build/img/tapis.jpg">
+                <p>Tapis (7)</p></a>
         </div>
         <div class="cat-card">
             <img src="/build/img/bench.jpg">
@@ -47,10 +58,6 @@
         <div class="cat-card">
             <img src="/build/img/19974.jpg">
             <p>Station (3)</p>
-        </div>
-        <div class="cat-card">
-            <img src="/build/img/tapis.jpg">
-            <p>Tapis (7)</p>
         </div>
         <div class="cat-card">
             <img src="/build/img/dvsq.jpg">

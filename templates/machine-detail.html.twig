@@ -8,17 +8,20 @@
             <button type="button" class="btn btn-danger">Demander une intervention</button>
         </a>
         <br>
-        <img src="/build/img/{{ machine.image }}">
-        <div>
-            <ul>
-                <li>Code : {{ machine.code }}</li>
-                <li>Marque : {{ machine.brand }}</li>
-                <li>Modèle : {{ machine.name }}</li>
-                <li>Catégorie : {{ machine.category }}</li>
-            </ul>
+        <div class="machine-info">
+            <img src="/build/img/{{ machine.image }}">
+            <div class="machine-label">
+                <ul>
+                    <li><span class="label">Code</span> {{ machine.code }}</li>
+                    <li><span class="label">Marque</span> {{ machine.brand }}</li>
+                    <li><span class="label">Modèle</span> {{ machine.name }}</li>
+                    <li><span class="label">Catégorie</span> {{ machine.category }}</li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <h3>Historique des interventions</h3>
+
+        <div class="detailsmachine">
+            <h3 class="history">Historique des interventions</h3>
             {% for ticket in tickets %}
                 {{ component('intervention-row', {
                     id: ticket.id,

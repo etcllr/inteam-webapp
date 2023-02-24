@@ -96,6 +96,12 @@ div.login-page{
 .intervention-button {
     display: flex;
     justify-content: flex-end;
+    color: white;
+    text-decoration: none;
+    button{
+        background-color: #F24E1E;
+        font-weight: bold;
+    }
 }
 
 div.ticket-form{
@@ -170,7 +176,7 @@ body{
 div.machine-grid{
     display: flex;
     justify-content: center;
-    padding: 0 10%;
+    padding: 0 0 5%;
 }
 div.machine-card{
     flex-basis: 22%;
@@ -205,7 +211,10 @@ div.cat-card{
     border-radius: 12px;
     margin-right: 16px;
     height: fit-content;
-
+    a{
+        text-decoration: none;
+        color: black;
+    }
     img{
         width: 100px;
         height: 100px;
@@ -217,7 +226,62 @@ div.cat-card{
         text-align: center;
     }
 }
+div.cat-card.active{
+    border: 1px solid black;
+}
 p.cat-label{
     text-align: center;
     padding-top: 96px;
+}
+div.machine-info{
+    display: flex;
+    img{
+        width: 50%;
+    }
+    div.machine-label{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        ul{
+            list-style: none;
+            li{
+                margin-top: 32px;
+                font-weight: bold;
+                font-size: 20px;
+            }
+        }
+        .label{
+            background-color: #ABCEDF;
+            padding: 5px 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+h3.history{
+    font-weight: bold;
+    text-align: left;
+}
+.row-inter{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin: 20px 0;
+    div.left span{
+        margin-right: 16px;
+    }
+    .state{
+        background-color: #ABCEDF;
+        padding: 5px 8px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+}
+.detailsmachine{
+    margin-bottom: 64px;
 }

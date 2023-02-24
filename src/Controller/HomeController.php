@@ -60,8 +60,10 @@ class HomeController extends AbstractController
                 $customerMachines[] = $machine;
             }
         }
+        $cat = $customerMachines[0]->getCategory();
         return $this->render('home-user.html.twig', [
             'machines' => $customerMachines,
+            'cat' => $cat,
         ]);
     }
 
