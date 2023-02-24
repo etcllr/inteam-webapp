@@ -4,9 +4,11 @@
     margin: 0;
     padding: 0;
 }
-
+h3{
+    font-weight: bold !important;
+}
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 //Login page
@@ -162,7 +164,44 @@ body{
 .form{
     width: 450px;
     position: relative;
-margin-left: 90px;
+//margin-left: 90px;
 }
 
+div.machine-grid{
+    display: flex;
+    justify-content: center;
+    padding: 0 10%;
+}
+div.machine-card{
+    flex-basis: 22%;
+    width: 22%;
+    img{
+        width: 100%;
+    }
+    a{
+        text-decoration: none;
+    }
+    h1{
+        font-size: 24px;
+        color: black;
+        text-decoration: none;
+        margin-bottom: 16px;
+    }
+    span{
+        font-weight: bold;
+    }
+}
 
+div.cat-grid{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 96px;
+}
+div.cat-card{
+    width: 8%;
+    flex-basis: 8%;
+}
+p.cat-label{
+    text-align: center;
+    padding-top: 96px;
+}

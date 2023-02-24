@@ -3,8 +3,9 @@
 {% block body %}
     {{ component('navbar') }}
     <br>
+    <br>
 
-    <h3> Mon parc d'équipements </h2>
+    <h3 class="bold"> Mon parc d'équipements </h2>
 
     <br> </br>  
  
@@ -17,7 +18,7 @@
 
     <div class="row height d-flex justify-content-center align-items-center">
 
-              <div class="col-md-6">
+              <div class="col-md-6 d-flex justify-content-center">
 
                 <div class="form">
                   <i class="fa fa-search"></i>
@@ -31,8 +32,15 @@
             
           </div>
 
-    
+    <p class="cat-label">
+        Choisir une catégorie
+    </p>
+    <div class="cat-grid">
+        <div class="cat-card">
 
+        </div>
+    </div>
+<div class="machine-grid">
     {% for machine in machines %}
         {{ component('card-machine', {
             id: machine.id,
@@ -43,4 +51,5 @@
             image: machine.image
         }) }}
     {% endfor %}
+</div>
 {% endblock %}
