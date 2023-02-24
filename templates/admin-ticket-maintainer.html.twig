@@ -21,7 +21,7 @@
         </div>
         <div class="container admin-container-right">
             {% for ticket in tickets %}
-                {{ component('intervention-row', {
+                {{ component('admin-intervention-row', {
                     id: ticket.id,
                     date: ticket.date,
                     title: ticket.title,
